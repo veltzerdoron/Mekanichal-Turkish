@@ -1,0 +1,83 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage[font={small,it}]{caption}
+\usepackage{natbib}
+\usepackage{tipa}
+\DeclareCaptionFont{tiny}{\tiny}
+
+\author{ Veltzer Doron\\
+Department of Linguistics\\
+Tel Aviv University\\
+Ramat Aviv, Tel Aviv, \underline{Israel} }
+\date{\today}
+
+\title{Mechanical Turkish} 
+
+\begin{document}
+
+\section{Mechanical Turkish}
+
+\subsection{Introduction}
+The paper proposes Recursive Neural Networks (RNNs) as phonological models. To demonstrate their
+effectiveness I revisit \cite{becker_phonological_2009} and \cite{becker_surfeit_2011}, summarize
+it's account of Turkish's voicing alternations and criticize it on grounds of implausible
+learnability. I then demonstrate how RNNs handle the same phenomenon in a much simpler and
+more learnable manner.
+
+\subsection{'surfeit of the stimulus' revisited}
+Turkish's accusative high vowel morpheme frequently causes intervocalic voicing. Compare
+\textipa{[amatS]} 'purpose' \textipa{[amatSW]} (+acc) to \textipa{[anatS]} 'mother hen'
+\textipa{[anadZW]} (+acc). The alternation is lexically specified and unpredictable, However, upon
+close inspection of the Turkish lexicon (\cite{inkelas_turkish_2000}) several facts about the
+correlation \footnote{All of these also have non trivial mutual correlations (i.e. in order to
+predict the probability of alternation in the lexicon it is beneficial to model all the parameters
+together)} between these alternations and various environmental features emerge:
+\begin{itemize}
+  \item Length of the stem greatly increases alternations.
+  \item Point Of Articulation (POA) of alternation affects alternations.
+  \item High vowels preceding the alternating consonant increase alternations.
+  \item Back vowels preceding the alternating consonant increase alternations.
+\end{itemize}
+
+When asked to produce the form on nonce words, the speakers showed productive knowledge as to the
+mutual pattern of length and POA but little to no (to opposite) knowledge of the equally significant
+quality of the preceding vowel.
+
+Becker then offers an OT model which enlists the mechanism of constraint cloning (CC)
+(\cite{pater_locus_2007}). when learners detect a conflict between a pair of surface
+forms, CC operates by cloning the constraint that caused the conflict. After cloning, constraints subdivide the lexicon among themselves. Repeating into as many sections as required for explaining
+speaker behavior. The unlearned preceding vowel quality correlation on the other hand is explained away by simply
+claiming that no markedness constraints exist to correlate preceding vowel quality and voicing.
+
+The work ends by asserting that a general statistical learner\footnote{such as the GLA whose results
+are presents} will learn all available correlations including the surfeit and in doing so overshoot
+the mark by greedily ``outperforming'' native speakers.
+
+\subsection{RNNs as phonological models}
+
+I sketch the relevance of the history of ML to OT grammars from the perceptron model that originally
+inspired OT to more contemporary ones recently achievıng across the board state of the art results
+in Natural Language Processing (NLP).
+
+First an NN was taught the alternation pattern of the accusative form on the lexicon, after
+learning it applies the form to nonce words. The goal of the network design was to generate a model
+that could statistically mimic the ``flawed'' human nonce results. NNs, being the full mapping
+generalization models they are, had to be manipulated in some way to allow them to exhibit
+universal limits inherent in the human speech mechanism, \textbf{I show three general ways to
+weaken their powers of inference}. Immersing them in the time dimension by inputing the phonemes
+serially (using an RNN), Overloading their task with other tasks and reducing structural connectivity.
+
+Ending I present results of an RNN structure engineered by applying structural limits\footnote{These
+are motivated both by the articulators, assuming different lines of command to the vocal
+folds/tongue and by autosegmental phonology.} and overloadeding its task to generate all 3 features
+required to form articulator commands.
+
+\pagebreak
+
+\bibliographystyle{apalike}
+\nocite{*}
+\bibliography{IGDAL}
+
+\end{document}
