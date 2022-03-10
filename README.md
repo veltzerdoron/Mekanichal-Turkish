@@ -1,21 +1,21 @@
-# Mekanichal-Turkish
+Mekanichal-Turkish
 This project relates to work done for an article with an identical name
 
-# Folders
+Folders
 
-#IGDAL 
+IGDAL 
 contains tex (and related files) for a summary of the paper for a conference submittal
-#PAPER
+PAPER
 contains tex (and related files) for the paper itself
-##RNN 
+RNN 
 The main folder for the python NN models
-###src
+src
 The folder for the project's py files (source code)
-####csv
+csv
 All csv input files and short features kept in same named txt files
-#####[ModelName]Nonce/TestResults
+ModelName]Nonce/TestResults
 Contains the csv files for the "speakers" output for [ModelName]
-####[ModelName]
+[ModelName]
 Contains the model named [ModelName] in Keras model format
-#####weights
+weights
 The 100 weights defining the 100 "speakers"
